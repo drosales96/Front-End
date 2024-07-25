@@ -1,20 +1,16 @@
 const screen = document.querySelector(".screen");
-const button = document.querySelectorAll(".butt");
+const buttons = document.querySelectorAll(".butt");
 
-button.forEach(buttons => {
-    buttons.addEventListener("click", () => {
-        const pushed_button = buttons.textContent;
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const pushedButton = button.textContent;
 
-        if (buttons.id === "c") {
+        if (button.id === "c") {
             screen.textContent = "0";
             return;
         }
 
-        if (buttons.id === "%") {
-            screen.textContent = eval(screen.textContent);
-        }
-
-        if (buttons.id === "delete") {
+        if (button.id === "delete") {
             if (screen.textContent.length === 1 || screen.textContent === "Error!") {
                 screen.textContent = "0";
             } else {
@@ -23,19 +19,39 @@ button.forEach(buttons => {
             return;
         }
 
-        if (buttons.id === "equal") {
+        if (button.id === "equal") {
             try {
-                screen.textContent = eval(screen.textContent);
+                const expression = screen.textContent.replace(/mod/g, '%');
+                screen.textContent = eval(expression);
             } catch {
                 screen.textContent = "Error!";
             }
             return;
         }
 
-        if (screen.textContent === "0" || screen.textContent === "Error!") {
-            screen.textContent = pushed_button;
-        } else {
-            screen.textContent += pushed_button;
+        if (pushedButton === ".") {
+            const parts = screen.textContent.split(/[\+\-\*\/\%]/);
+            const lastPart = parts[parts.length - 1];
+            if (lastPart.includes(".")) {
+                return;
+            }
         }
-    })
-})
+
+        if (pushedButton === "mod") {
+            screen.textContent += " mod ";
+            return;
+        }
+
+        if (screen.textContent === "0" || screen.textContent === "Error!") {
+            if (pushedButton === "0") {
+                screen.textContent = "0";
+            } else if (pushedButton === ".") {
+                screen.textContent += pushedButton;
+            } else {
+                screen.textContent = pushedButton;
+            }
+        } else {
+            screen.textContent += pushedButton;
+        }
+    });
+});
