@@ -42,6 +42,13 @@ buttons.forEach(button => {
             return;
         }
 
+        if (screen.textContent.length > 12) {
+            screen.textContent = 'Too long!';
+            screen.textContent = '';
+            screen.textContent = "0";
+            return;
+        }
+
         if (screen.textContent === "0" || screen.textContent === "Error!") {
             if (pushedButton === "0") {
                 screen.textContent = "0";
