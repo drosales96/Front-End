@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave App</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="waves">
+        <div class="content">
+            <h2>Wave Login</h1>
+            <p>Este proyecto utiliza Vanta.js y Three.js para crear un efecto de olas animadas en el fondo de la página. Vanta.js genera gráficos interactivos en 3D optimizados para la web, y en este caso, se ha implementado el efecto "Waves".</p>
+        </div>
+    </div>
+
+    <!-- Cargar librerías desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.waves.min.js"></script>
+
+    <script>
+        // Inicializar el efecto de olas VANTA
+        VANTA.WAVES({
+            el: "#waves",              // Apunta al ID del contenedor
+            mouseControls: true,       // Control con el mouse
+            touchControls: true,       // Control con el touch
+            gyroControls: false,       // Desactiva giroscopio
+            minHeight: 200.00,         // Altura mínima
+            minWidth: 200.00,          // Ancho mínimo
+            scale: 1.00,               // Escala del efecto
+            scaleMobile: 1.00,         // Escala en dispositivos móviles
+            color: 0x0a3d62,           // Color azul marino para las olas
+            waveHeight: 20.0,          // Altura de las olas
+            waveSpeed: 1.2,            // Velocidad del movimiento de las olas
+            shininess: 50.0            // Brillo de las olas
+        })
+    </script>
+</body>
+</html>
