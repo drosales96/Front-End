@@ -16,3 +16,6 @@ Para utilizar Vanta.js en tu proyecto, sigue estos pasos:
 
    ```html
    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.2/vanta.birds.min.js"></script>
+
+![GIF](wave.gif)
+
